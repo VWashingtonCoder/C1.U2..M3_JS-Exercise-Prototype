@@ -147,15 +147,15 @@ Car.prototype.fill = function(gallons){
 
 //MVP_Complete: Tests 22/22 Passed
 function Baby(name, age, favoriteToy) {
-//   Person.call(this, name, age);
-//   this.favoriteToy = favoriteToy;
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
 
-// Baby.prototype = Object.create(Person.prototype);
+Baby.prototype = Object.create(Person.prototype);
 
-// Baby.prototype.play = function(){
-//   return `Playing with ${this.favoriteToy}`
-// }
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+}
 
 // // create new Baby
 // const debbie = new Baby('Debbie', 3, 'triceracorn');
