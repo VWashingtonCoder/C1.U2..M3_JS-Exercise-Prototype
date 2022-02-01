@@ -111,21 +111,17 @@ Car.prototype.fill = function(gallons){
 }
 
 // //Stretch functions_Need help returning strings
-// Car.prototype.drive = function(distance){
-//   let odometerRaise = this.odometer + distance;
-//   let tankUsed = this.tank - (distance/this.milesPerGallon);
-//   if (odometerRaise > 0){
-//     if(tankUsed < this.tank){
-//       if (this.tank = 0){
-//         return `I ran out of fuel at ${odometerRaise} miles!`
-//       }else if(this.tank > 0){
-//         return `I've still got ${tankUsed} gallons left. Let's drive`
-//       }
-//       return this.tank = tankUsed
-//     }
-//     return this.odometer = odometerRaise;
-//   }
-// }
+Car.prototype.drive = function(distance){
+  const driveableMiles = this.tank * this.milesPerGallon;
+  if(distance <= driveableMiles){
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - (distance / this.milesPerGallon);
+  }else{
+    this.odometer = this.odometer + driveableMiles;
+    this.tank = 0;
+    return `I ran out of fuel at ${this.odometer} miles!`
+  }
+}
 
 // //Car object/instance
 // const car1 = new Car('Pontiac Sunfire', 20);
@@ -133,7 +129,7 @@ Car.prototype.fill = function(gallons){
 // //function calls
 // car1.fill(15);
 
-// console.log(car1.drive(200));
+// console.log(car1.drive(500));
 // //console test
 // console.log(car1);
 
